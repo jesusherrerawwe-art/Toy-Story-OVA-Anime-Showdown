@@ -20,7 +20,7 @@ An original fan fiction story where **Woody, Buzz, and Bonnie's toys** meet **si
 - [x] **Chapter 3** — *Whose Room Is This Anyway?*
 - [x] **Chapter 4** — *The Cracks in the Armor*
 - [x] **Chapter 5** — *Operation: Get Back*
-- [ ] Chapter 6 — *Until Next Time, Cowboys*
+- [x] **Chapter 6** — *Until Next Time, Cowboys*
 
 ## 🛠️ Tech Stack
 
@@ -42,7 +42,8 @@ Pure **HTML5 + CSS3 + Vanilla JavaScript** — no frameworks. Designed for GitHu
 │   ├── chapter-2.html      ← "Six Warriors Walk Into a Bedroom"
 │   ├── chapter-3.html      ← "Whose Room Is This Anyway?"
 │   ├── chapter-4.html      ← "The Cracks in the Armor"
-│   └── chapter-5.html      ← "Operation: Get Back"
+│   ├── chapter-5.html      ← "Operation: Get Back"
+│   └── chapter-6.html      ← "Until Next Time, Cowboys"
 ├── css/
 │   ├── style.css           ← Main styles + character dialogue colors
 │   └── themes.css          ← Dark mode + POV accent themes
