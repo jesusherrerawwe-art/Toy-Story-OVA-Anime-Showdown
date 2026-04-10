@@ -1,0 +1,956 @@
+/* ============================================
+   Toy Story OVA: Anime Showdown — Main Styles
+   "When Toys Meet Anime Figures"
+   ============================================ */
+
+/* ---------- Google Fonts ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Baloo+2:wght@500;700&display=swap');
+
+/* ---------- CSS Custom Properties ---------- */
+:root {
+  /* Toy Story palette */
+  --sky-blue: #87CEEB;
+  --woody-brown: #8B4513;
+  --buzz-purple: #7B68EE;
+  --buzz-green: #228B22;
+  --jessie-red: #DC143C;
+  --hamm-pink: #E8A0BF;
+  --rex-green: #6BBF59;
+  --slinky-gold: #DAA520;
+
+  /* Anime palette */
+  --goku-orange: #FF6600;
+  --naruto-yellow: #FFA500;
+  --luffy-red: #CC0000;
+  --ichigo-black: #1a1a1a;
+  --deku-green: #2E8B57;
+  --tanjiro-teal: #008080;
+
+  /* UI colours */
+  --bg-primary: #FFF8F0;
+  --bg-secondary: #FFF0E0;
+  --bg-card: #FFFFFF;
+  --text-primary: #2C1810;
+  --text-secondary: #5C4033;
+  --text-muted: #8B7D6B;
+  --border-light: #E8DDD0;
+  --shadow-soft: rgba(139, 69, 19, 0.08);
+  --shadow-medium: rgba(139, 69, 19, 0.15);
+
+  /* Typography */
+  --font-heading: 'Fredoka One', 'Baloo 2', cursive;
+  --font-body: 'Nunito', 'Segoe UI', sans-serif;
+  --font-accent: 'Baloo 2', cursive;
+
+  /* Spacing */
+  --reading-width: 720px;
+  --nav-height: 60px;
+  --progress-height: 4px;
+}
+
+/* ---------- Reset & Base ---------- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 18px;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.8;
+  transition: background 0.4s ease, color 0.4s ease;
+  overflow-x: hidden;
+}
+
+a {
+  color: var(--woody-brown);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--buzz-purple);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* ---------- Reading Progress Bar ---------- */
+#reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: var(--progress-height);
+  background: linear-gradient(90deg, var(--woody-brown), var(--buzz-purple), var(--goku-orange));
+  z-index: 9999;
+  transition: width 0.15s ease-out;
+  border-radius: 0 2px 2px 0;
+}
+
+/* ---------- Navigation ---------- */
+.main-nav {
+  position: fixed;
+  top: var(--progress-height);
+  left: 0;
+  right: 0;
+  height: var(--nav-height);
+  background: rgba(255, 248, 240, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-light);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  z-index: 1000;
+  transition: background 0.4s ease, border-color 0.4s ease;
+}
+
+.nav-logo {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  color: var(--woody-brown);
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.nav-logo .logo-accent {
+  color: var(--goku-orange);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-secondary);
+  padding: 0.3rem 0;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: var(--goku-orange);
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+  width: 100%;
+}
+
+/* Dark Mode Toggle */
+.dark-mode-toggle {
+  background: none;
+  border: 2px solid var(--border-light);
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.dark-mode-toggle:hover {
+  border-color: var(--goku-orange);
+  transform: rotate(20deg);
+}
+
+/* Hamburger for mobile */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--text-primary);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* ---------- Hero Section ---------- */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  padding-top: calc(var(--nav-height) + var(--progress-height) + 2rem);
+  background: linear-gradient(
+    170deg,
+    var(--bg-primary) 0%,
+    #E8F4FD 30%,
+    #FFF0E0 60%,
+    var(--bg-primary) 100%
+  );
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '⭐';
+  position: absolute;
+  top: 15%;
+  left: 10%;
+  font-size: 2rem;
+  opacity: 0.15;
+  animation: float 6s ease-in-out infinite;
+}
+
+.hero::after {
+  content: '🌟';
+  position: absolute;
+  bottom: 20%;
+  right: 12%;
+  font-size: 2.5rem;
+  opacity: 0.12;
+  animation: float 8s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(10deg); }
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 102, 0, 0.1);
+  border: 1px solid rgba(255, 102, 0, 0.2);
+  border-radius: 30px;
+  padding: 0.4rem 1.2rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--goku-orange);
+  margin-bottom: 1.5rem;
+}
+
+.hero h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(2.2rem, 6vw, 4rem);
+  color: var(--woody-brown);
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+}
+
+.hero h1 .title-anime {
+  color: var(--goku-orange);
+  display: block;
+}
+
+.hero-tagline {
+  font-family: var(--font-accent);
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+.hero-typewriter {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  min-height: 1.6em;
+  margin-bottom: 2.5rem;
+}
+
+.hero-typewriter .cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background: var(--goku-orange);
+  margin-left: 2px;
+  animation: blink 1s step-end infinite;
+  vertical-align: text-bottom;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* Faction Badges */
+.faction-badges {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.faction {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.faction-icon {
+  font-size: 2.5rem;
+}
+
+.faction-label {
+  font-family: var(--font-accent);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--text-muted);
+}
+
+.faction-vs {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  color: var(--jessie-red);
+}
+
+/* CTA Button */
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: linear-gradient(135deg, var(--woody-brown), #A0522D);
+  color: #FFF8F0;
+  font-family: var(--font-accent);
+  font-size: 1.05rem;
+  font-weight: 700;
+  padding: 0.9rem 2.2rem;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(139, 69, 19, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  letter-spacing: 0.5px;
+}
+
+.cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(139, 69, 19, 0.4);
+  color: #FFF8F0;
+}
+
+.cta-button:active {
+  transform: translateY(0);
+}
+
+/* ---------- Chapter Navigation Strip ---------- */
+.chapter-nav {
+  position: sticky;
+  top: calc(var(--progress-height) + var(--nav-height));
+  background: rgba(255, 248, 240, 0.97);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border-light);
+  z-index: 900;
+  padding: 0.6rem 1rem;
+  overflow-x: auto;
+  transition: background 0.4s ease;
+}
+
+.chapter-nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.act-group {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.act-label {
+  font-family: var(--font-accent);
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.act-label.act-i { color: var(--buzz-green); background: rgba(34, 139, 34, 0.08); }
+.act-label.act-ii { color: var(--naruto-yellow); background: rgba(255, 165, 0, 0.08); }
+.act-label.act-iii { color: var(--jessie-red); background: rgba(220, 20, 60, 0.08); }
+
+.chapter-link {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.7rem;
+  border-radius: 8px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.chapter-link:hover {
+  background: rgba(139, 69, 19, 0.06);
+  color: var(--woody-brown);
+}
+
+.chapter-link.active {
+  background: var(--woody-brown);
+  color: #FFF8F0;
+}
+
+.chapter-link .ch-icon {
+  font-size: 0.95rem;
+}
+
+.act-divider {
+  width: 1px;
+  height: 24px;
+  background: var(--border-light);
+  margin: 0 0.4rem;
+}
+
+/* ---------- Section Headings ---------- */
+.section-heading {
+  text-align: center;
+  padding: 4rem 2rem 2rem;
+}
+
+.section-heading h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  color: var(--woody-brown);
+  margin-bottom: 0.5rem;
+}
+
+.section-heading p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* ---------- Chapter Card (Index page) ---------- */
+.chapters-grid {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 2rem 4rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.chapter-card {
+  background: var(--bg-card);
+  border-radius: 16px;
+  padding: 1.8rem;
+  border: 1px solid var(--border-light);
+  box-shadow: 0 2px 12px var(--shadow-soft);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.chapter-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  border-radius: 16px 16px 0 0;
+}
+
+.chapter-card.act-i::before { background: var(--buzz-green); }
+.chapter-card.act-ii::before { background: var(--naruto-yellow); }
+.chapter-card.act-iii::before { background: var(--jessie-red); }
+
+.chapter-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px var(--shadow-medium);
+}
+
+.chapter-card .card-act {
+  font-family: var(--font-accent);
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 0.5rem;
+}
+
+.chapter-card.act-i .card-act { color: var(--buzz-green); }
+.chapter-card.act-ii .card-act { color: var(--naruto-yellow); }
+.chapter-card.act-iii .card-act { color: var(--jessie-red); }
+
+.chapter-card .card-number {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 0.3rem;
+}
+
+.chapter-card h3 {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  color: var(--text-primary);
+  margin-bottom: 0.6rem;
+  line-height: 1.3;
+}
+
+.chapter-card .card-pov {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 0.8rem;
+  font-style: italic;
+}
+
+.chapter-card .card-summary {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 1.2rem;
+}
+
+.chapter-card .card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--woody-brown);
+}
+
+.chapter-card .card-link:hover {
+  gap: 0.7rem;
+}
+
+.chapter-card .card-link.disabled {
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+/* ---------- Chapter Reading Page ---------- */
+.chapter-page {
+  padding-top: calc(var(--nav-height) + var(--progress-height) + 2rem);
+}
+
+.chapter-header {
+  text-align: center;
+  padding: 3rem 2rem;
+  max-width: var(--reading-width);
+  margin: 0 auto;
+}
+
+.chapter-header .ch-act-label {
+  font-family: var(--font-accent);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--buzz-green);
+  margin-bottom: 0.5rem;
+}
+
+.chapter-header .ch-number {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.chapter-header h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+  color: var(--woody-brown);
+  line-height: 1.2;
+  margin-bottom: 0.8rem;
+}
+
+.chapter-header .ch-pov {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.chapter-header .ch-pov strong {
+  color: var(--text-secondary);
+}
+
+/* Scene/Story Content */
+.chapter-content {
+  max-width: var(--reading-width);
+  margin: 0 auto;
+  padding: 0 2rem 4rem;
+}
+
+.chapter-content p {
+  margin-bottom: 1.4rem;
+  text-indent: 1.5rem;
+}
+
+.chapter-content p.no-indent {
+  text-indent: 0;
+}
+
+/* Scene Break */
+.scene-break {
+  text-align: center;
+  padding: 2rem 0;
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  letter-spacing: 8px;
+  opacity: 0.5;
+}
+
+.scene-break.icon-break {
+  letter-spacing: 12px;
+  font-size: 1rem;
+  opacity: 0.7;
+}
+
+/* Character Dialogue */
+.dialogue {
+  text-indent: 0 !important;
+  padding-left: 1rem;
+  border-left: 3px solid var(--border-light);
+  margin-bottom: 1.4rem;
+  font-style: normal;
+}
+
+.dialogue .speaker {
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* Character-colored dialogue */
+.dialogue.woody { border-left-color: var(--woody-brown); }
+.dialogue.woody .speaker { color: var(--woody-brown); }
+
+.dialogue.buzz { border-left-color: var(--buzz-purple); }
+.dialogue.buzz .speaker { color: var(--buzz-purple); }
+
+.dialogue.jessie { border-left-color: var(--jessie-red); }
+.dialogue.jessie .speaker { color: var(--jessie-red); }
+
+.dialogue.hamm { border-left-color: var(--hamm-pink); }
+.dialogue.hamm .speaker { color: #B8527A; }
+
+.dialogue.rex { border-left-color: var(--rex-green); }
+.dialogue.rex .speaker { color: var(--rex-green); }
+
+.dialogue.dolly { border-left-color: #9370DB; }
+.dialogue.dolly .speaker { color: #9370DB; }
+
+.dialogue.trixie { border-left-color: #5BC0DE; }
+.dialogue.trixie .speaker { color: #4A9AB5; }
+
+.dialogue.buttercup { border-left-color: var(--slinky-gold); }
+.dialogue.buttercup .speaker { color: var(--slinky-gold); }
+
+.dialogue.pricklepants { border-left-color: #6B8E23; }
+.dialogue.pricklepants .speaker { color: #6B8E23; }
+
+.dialogue.slinky { border-left-color: var(--slinky-gold); }
+.dialogue.slinky .speaker { color: #B8860B; }
+
+.dialogue.potato { border-left-color: #CD853F; }
+.dialogue.potato .speaker { color: #8B6914; }
+
+.dialogue.forky { border-left-color: #FF69B4; }
+.dialogue.forky .speaker { color: #FF69B4; }
+
+.dialogue.bonnies-mom { border-left-color: #DDA0DD; }
+.dialogue.bonnies-mom .speaker { color: #9B59B6; }
+
+/* Anime characters */
+.dialogue.goku { border-left-color: var(--goku-orange); }
+.dialogue.goku .speaker { color: var(--goku-orange); }
+
+.dialogue.naruto { border-left-color: var(--naruto-yellow); }
+.dialogue.naruto .speaker { color: #D4910A; }
+
+.dialogue.luffy { border-left-color: var(--luffy-red); }
+.dialogue.luffy .speaker { color: var(--luffy-red); }
+
+.dialogue.ichigo { border-left-color: var(--ichigo-black); }
+.dialogue.ichigo .speaker { color: var(--ichigo-black); }
+
+.dialogue.deku { border-left-color: var(--deku-green); }
+.dialogue.deku .speaker { color: var(--deku-green); }
+
+.dialogue.tanjiro { border-left-color: var(--tanjiro-teal); }
+.dialogue.tanjiro .speaker { color: var(--tanjiro-teal); }
+
+/* Pull Quote */
+.pull-quote {
+  max-width: 550px;
+  margin: 2.5rem auto;
+  padding: 1.5rem 2rem;
+  border-left: 4px solid var(--goku-orange);
+  background: rgba(255, 102, 0, 0.04);
+  border-radius: 0 12px 12px 0;
+  font-family: var(--font-accent);
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: var(--text-primary);
+  font-style: italic;
+  text-indent: 0;
+}
+
+.pull-quote .quote-attribution {
+  display: block;
+  margin-top: 0.8rem;
+  font-size: 0.78rem;
+  font-style: normal;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Character-colored pull quotes */
+.pull-quote.woody { border-left-color: var(--woody-brown); background: rgba(139, 69, 19, 0.04); }
+.pull-quote.buzz { border-left-color: var(--buzz-purple); background: rgba(123, 104, 238, 0.04); }
+.pull-quote.jessie { border-left-color: var(--jessie-red); background: rgba(220, 20, 60, 0.04); }
+
+/* Narrative emphasis */
+.emphasis {
+  font-style: italic;
+  color: var(--text-secondary);
+}
+
+.action {
+  font-style: italic;
+  color: var(--text-muted);
+}
+
+.sound-effect {
+  display: block;
+  text-align: center;
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  color: var(--woody-brown);
+  padding: 1rem 0;
+  letter-spacing: 2px;
+  text-indent: 0;
+}
+
+/* Internal Monologue */
+.internal {
+  font-style: italic;
+  opacity: 0.85;
+}
+
+/* ---------- Chapter End / Navigation ---------- */
+.chapter-end {
+  text-align: center;
+  padding: 3rem 2rem 2rem;
+  max-width: var(--reading-width);
+  margin: 0 auto;
+}
+
+.chapter-end .end-ornament {
+  font-size: 1.5rem;
+  color: var(--text-muted);
+  opacity: 0.4;
+  margin-bottom: 1.5rem;
+  letter-spacing: 8px;
+}
+
+.chapter-end .end-hook {
+  font-family: var(--font-accent);
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  font-style: italic;
+  max-width: 500px;
+  margin: 0 auto 2rem;
+  line-height: 1.6;
+}
+
+.chapter-nav-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.ch-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.5rem;
+  border-radius: 10px;
+  font-family: var(--font-accent);
+  font-weight: 700;
+  font-size: 0.9rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ch-nav-btn.prev {
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-light);
+}
+
+.ch-nav-btn.next {
+  background: linear-gradient(135deg, var(--woody-brown), #A0522D);
+  color: #FFF8F0;
+  box-shadow: 0 3px 12px rgba(139, 69, 19, 0.25);
+}
+
+.ch-nav-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 18px var(--shadow-medium);
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  text-align: center;
+  padding: 3rem 2rem;
+  border-top: 1px solid var(--border-light);
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  line-height: 1.8;
+}
+
+.site-footer .footer-credits {
+  max-width: 600px;
+  margin: 0 auto 1rem;
+}
+
+.site-footer .footer-easter-egg {
+  font-style: italic;
+  opacity: 0.6;
+  margin-top: 1rem;
+}
+
+/* ---------- Scroll Animations ---------- */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+
+  .main-nav {
+    padding: 0 1rem;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: var(--nav-height);
+    left: 0;
+    right: 0;
+    background: rgba(255, 248, 240, 0.98);
+    flex-direction: column;
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-light);
+    gap: 0.5rem;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .hero {
+    padding: 1.5rem;
+    padding-top: calc(var(--nav-height) + var(--progress-height) + 1.5rem);
+  }
+
+  .faction-badges {
+    gap: 1rem;
+  }
+
+  .faction-icon {
+    font-size: 2rem;
+  }
+
+  .chapters-grid {
+    grid-template-columns: 1fr;
+    padding: 0 1rem 3rem;
+  }
+
+  .chapter-content {
+    padding: 0 1.2rem 3rem;
+  }
+
+  .chapter-nav-inner {
+    justify-content: flex-start;
+  }
+
+  .pull-quote {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .chapter-header h1 {
+    font-size: 1.6rem;
+  }
+
+  .cta-button {
+    width: 100%;
+    justify-content: center;
+  }
+}

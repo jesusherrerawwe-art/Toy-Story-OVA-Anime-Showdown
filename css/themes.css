@@ -1,0 +1,133 @@
+/* ============================================
+   Toy Story OVA: Anime Showdown — Themes
+   Dark Mode + Character Accent Themes
+   ============================================ */
+
+/* ---------- Dark Mode ---------- */
+body.dark-mode {
+  --bg-primary: #1A1520;
+  --bg-secondary: #231E2A;
+  --bg-card: #2A2433;
+  --text-primary: #E8E0F0;
+  --text-secondary: #BDB0CC;
+  --text-muted: #8A7D99;
+  --border-light: #3A3345;
+  --shadow-soft: rgba(0, 0, 0, 0.2);
+  --shadow-medium: rgba(0, 0, 0, 0.35);
+}
+
+body.dark-mode .main-nav {
+  background: rgba(26, 21, 32, 0.95);
+}
+
+body.dark-mode .chapter-nav {
+  background: rgba(26, 21, 32, 0.97);
+}
+
+body.dark-mode .nav-links a {
+  color: var(--text-secondary);
+}
+
+body.dark-mode .hero {
+  background: linear-gradient(
+    170deg,
+    var(--bg-primary) 0%,
+    #1E1A28 30%,
+    #251E20 60%,
+    var(--bg-primary) 100%
+  );
+}
+
+body.dark-mode .cta-button {
+  background: linear-gradient(135deg, var(--goku-orange), #E85500);
+}
+
+body.dark-mode .chapter-card {
+  border-color: var(--border-light);
+}
+
+body.dark-mode .dialogue {
+  border-left-color: var(--border-light);
+}
+
+body.dark-mode .dialogue.woody { border-left-color: var(--woody-brown); }
+body.dark-mode .dialogue.buzz { border-left-color: var(--buzz-purple); }
+body.dark-mode .dialogue.jessie { border-left-color: var(--jessie-red); }
+body.dark-mode .dialogue.goku { border-left-color: var(--goku-orange); }
+body.dark-mode .dialogue.naruto { border-left-color: var(--naruto-yellow); }
+body.dark-mode .dialogue.luffy { border-left-color: var(--luffy-red); }
+body.dark-mode .dialogue.ichigo { border-left-color: #888; }
+body.dark-mode .dialogue.deku { border-left-color: var(--deku-green); }
+body.dark-mode .dialogue.tanjiro { border-left-color: var(--tanjiro-teal); }
+
+/* Dark mode speaker overrides for readability */
+body.dark-mode .dialogue.woody .speaker { color: #C4884A; }
+body.dark-mode .dialogue.buzz .speaker { color: #9B8EFF; }
+body.dark-mode .dialogue.jessie .speaker { color: #FF6B7A; }
+body.dark-mode .dialogue.hamm .speaker { color: #E8A0BF; }
+body.dark-mode .dialogue.rex .speaker { color: #8ED87E; }
+body.dark-mode .dialogue.dolly .speaker { color: #B09AE8; }
+body.dark-mode .dialogue.trixie .speaker { color: #7DD4EE; }
+body.dark-mode .dialogue.buttercup .speaker { color: #F0D060; }
+body.dark-mode .dialogue.pricklepants .speaker { color: #A0C060; }
+body.dark-mode .dialogue.slinky .speaker { color: #E8C850; }
+body.dark-mode .dialogue.potato .speaker { color: #DDB870; }
+body.dark-mode .dialogue.forky .speaker { color: #FF90C8; }
+body.dark-mode .dialogue.bonnies-mom .speaker { color: #D8A0E8; }
+
+body.dark-mode .dialogue.goku .speaker { color: #FF8833; }
+body.dark-mode .dialogue.naruto .speaker { color: #FFBB44; }
+body.dark-mode .dialogue.luffy .speaker { color: #FF5555; }
+body.dark-mode .dialogue.ichigo .speaker { color: #CCCCCC; }
+body.dark-mode .dialogue.deku .speaker { color: #50C878; }
+body.dark-mode .dialogue.tanjiro .speaker { color: #40C0B0; }
+
+body.dark-mode .pull-quote {
+  background: rgba(255, 102, 0, 0.06);
+}
+
+body.dark-mode .pull-quote.woody { background: rgba(139, 69, 19, 0.08); }
+body.dark-mode .pull-quote.buzz { background: rgba(123, 104, 238, 0.08); }
+
+body.dark-mode .sound-effect {
+  color: var(--goku-orange);
+}
+
+body.dark-mode .ch-nav-btn.prev {
+  background: var(--bg-secondary);
+  border-color: var(--border-light);
+  color: var(--text-secondary);
+}
+
+body.dark-mode .ch-nav-btn.next {
+  background: linear-gradient(135deg, var(--goku-orange), #E85500);
+}
+
+body.dark-mode .site-footer {
+  border-top-color: var(--border-light);
+}
+
+/* ---------- Chapter POV Accent (subtle background shift) ---------- */
+.chapter-page[data-pov="woody"] {
+  background-image: linear-gradient(180deg, rgba(139, 69, 19, 0.02) 0%, transparent 40%);
+}
+
+.chapter-page[data-pov="buzz"] {
+  background-image: linear-gradient(180deg, rgba(123, 104, 238, 0.02) 0%, transparent 40%);
+}
+
+.chapter-page[data-pov="goku"] {
+  background-image: linear-gradient(180deg, rgba(255, 102, 0, 0.02) 0%, transparent 40%);
+}
+
+.chapter-page[data-pov="deku"] {
+  background-image: linear-gradient(180deg, rgba(46, 139, 87, 0.02) 0%, transparent 40%);
+}
+
+.chapter-page[data-pov="tanjiro"] {
+  background-image: linear-gradient(180deg, rgba(0, 128, 128, 0.02) 0%, transparent 40%);
+}
+
+.chapter-page[data-pov="ensemble"] {
+  background-image: linear-gradient(180deg, rgba(255, 165, 0, 0.02) 0%, transparent 40%);
+}
