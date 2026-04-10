@@ -17,7 +17,7 @@ An original fan fiction story where **Woody, Buzz, and Bonnie's toys** meet **si
 
 - [x] **Chapter 1** — *A Quiet Morning in Bonnie's Room*
 - [x] **Chapter 2** — *Six Warriors Walk Into a Bedroom*
-- [ ] Chapter 3 — *Whose Room Is This Anyway?*
+- [x] **Chapter 3** — *Whose Room Is This Anyway?*
 - [ ] Chapter 4 — *The Cracks in the Armor*
 - [ ] Chapter 5 — *Operation: Get Back*
 - [ ] Chapter 6 — *Until Next Time, Cowboys*
@@ -39,7 +39,8 @@ Pure **HTML5 + CSS3 + Vanilla JavaScript** — no frameworks. Designed for GitHu
 ├── index.html              ← Landing page + chapter directory
 ├── chapters/
 │   ├── chapter-1.html      ← "A Quiet Morning in Bonnie's Room"
-│   └── chapter-2.html      ← "Six Warriors Walk Into a Bedroom"
+│   ├── chapter-2.html      ← "Six Warriors Walk Into a Bedroom"
+│   └── chapter-3.html      ← "Whose Room Is This Anyway?"
 ├── css/
 │   ├── style.css           ← Main styles + character dialogue colors
 │   └── themes.css          ← Dark mode + POV accent themes
